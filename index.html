@@ -37,8 +37,6 @@
     img{content-visibility:auto}
 
     /* Presale-ish pills/buttons/card */
-    .ticker{background:#ffb3c7;color:#111827;font-weight:900;letter-spacing:.02em}
-    .ticker span{display:inline-block;padding:.55rem .9rem}
     .pilltab{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .9rem;border-radius:14px;
       background:#fff;border:2px solid #111827;box-shadow:3px 3px 0 #0001;font-weight:800}
     .badge-dot{display:inline-flex;align-items:center;gap:.45rem;font-weight:800;
@@ -57,6 +55,25 @@
     /* Contest + Leaderboard chunky vibe */
     .chunk-card{border:2px solid #111827;border-radius:16px;background:#fff;box-shadow:6px 6px 0 #11182710}
     .chunk-title{font-family:'Baloo 2';}
+
+    /* === Modern scrolling ticker (Option A) === */
+    .ticker{
+      --speed: 35s; /* adjust speed (smaller = faster) */
+      background:#ffb3c7; color:#111827; border-bottom:1px solid #0001;
+      overflow:hidden; white-space:nowrap; position:relative;
+    }
+    .ticker__fade{
+      pointer-events:none; position:absolute; inset:0;
+      background:linear-gradient(90deg, #ffb3c7 0, transparent 80px),
+                 linear-gradient(270deg,#ffb3c7 0, transparent 80px);
+      mask: linear-gradient(90deg, #0000, #000 60px calc(100% - 60px), #0000);
+    }
+    .ticker__track{ display:flex; gap:2rem; width:max-content; animation:ticker var(--speed) linear infinite; }
+    .ticker__item{ padding:.6rem 0; font-weight:900; letter-spacing:.02em; }
+    .ticker__dot::before{ content:"•"; margin:0 .75rem; opacity:.7 }
+    .ticker:hover .ticker__track{ animation-play-state:paused; }
+    @media (prefers-reduced-motion: reduce){ .ticker__track{ animation:none; } }
+    @keyframes ticker{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
   </style>
 
   <!-- Open Graph -->
@@ -88,13 +105,27 @@
     </div>
   </header>
 
-  <!-- TOP TICKER -->
-  <div class="ticker border-b border-black/10">
-    <div class="max-w-7xl mx-auto overflow-x-auto whitespace-nowrap">
-      <span>THE ZADDY COIN ($ZADDY) PRESALE/ICO IS LIVE</span>
-      <span>• MOST VALUABLE TOKEN COMING TO THE XRPL</span>
-      <span>• COLLECTIBLES, DAPPS, MEMES, & STREETWEAR</span>
-      <span>• UNMATCHED SCALABILITY • GENEROUS REWARDS</span>
+  <!-- TOP TICKER (infinite scroll) -->
+  <div class="ticker">
+    <div class="max-w-7xl mx-auto relative">
+      <div class="ticker__fade"></div>
+      <div class="ticker__track">
+        <div class="ticker__row flex gap-8">
+          <span class="ticker__item">THE ZADDY COIN ($ZADDY) PRESALE/ICO IS LIVE</span>
+          <span class="ticker__item ticker__dot">MOST VALUABLE TOKEN COMING TO THE XRPL</span>
+          <span class="ticker__item ticker__dot">COLLECTIBLES, DAPPS, MEMES, &amp; STREETWEAR</span>
+          <span class="ticker__item ticker__dot">UNMATCHED SCALABILITY</span>
+          <span class="ticker__item ticker__dot">GENEROUS REWARDS</span>
+        </div>
+        <!-- duplicate for seamless loop -->
+        <div class="ticker__row flex gap-8" aria-hidden="true">
+          <span class="ticker__item">THE ZADDY COIN ($ZADDY) PRESALE/ICO IS LIVE</span>
+          <span class="ticker__item ticker__dot">MOST VALUABLE TOKEN COMING TO THE XRPL</span>
+          <span class="ticker__item ticker__dot">COLLECTIBLES, DAPPS, MEMES, &amp; STREETWEAR</span>
+          <span class="ticker__item ticker__dot">UNMATCHED SCALABILITY</span>
+          <span class="ticker__item ticker__dot">GENEROUS REWARDS</span>
+        </div>
+      </div>
     </div>
   </div>
 
