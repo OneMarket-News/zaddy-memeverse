@@ -11,25 +11,64 @@
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root{--pink:#ffb3c7;--blue:#bfe2ff;--mint:#baf7d5;--yellow:#fff4a3;--lav:#d7c8ff;--ink:#0f172a}
+    /* === ZADDY Pastel + Presale Vibe === */
+    :root{
+      --pink:#ffb3c7; --blue:#bfe2ff; --mint:#baf7d5; --yellow:#fff4a3; --lav:#d7c8ff; --ink:#111827;
+      --bubble:#ffe5ed; --line:#e9d7f0;
+    }
     html{scroll-behavior:smooth}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:#fff;color:#0f172a}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:#fff;color:var(--ink)}
     .h-font{font-family:'Baloo 2',system-ui,-apple-system}
-    .candy-bg{background:radial-gradient(900px 500px at 15% -10%,var(--pink) 0%,transparent 60%),radial-gradient(800px 520px at 90% -15%,var(--blue) 0%,transparent 60%),radial-gradient(700px 500px at -10% 70%,var(--mint) 0%,transparent 60%),radial-gradient(600px 420px at 110% 80%,var(--yellow) 0%,transparent 60%)}
-    .card{backdrop-filter:saturate(160%) blur(8px);background:rgba(255,255,255,.75);border:1px solid rgba(15,23,42,.08);border-radius:24px;box-shadow:0 10px 30px rgba(15,23,42,.08)}
-    .chip{display:inline-flex;align-items:center;gap:.5rem;border-radius:9999px;padding:.35rem .75rem;font-size:.75rem;font-weight:700;letter-spacing:.02em;background:linear-gradient(90deg,var(--pink),var(--lav));color:#432a59}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.8rem 1.1rem;border-radius:9999px;font-weight:800;transition:transform .08s ease,box-shadow .2s ease}
+    .candy-bg{
+      background:
+        radial-gradient(900px 500px at 15% -10%, var(--pink) 0%, transparent 60%),
+        radial-gradient(800px 520px at 90% -15%, var(--blue) 0%, transparent 60%),
+        radial-gradient(700px 500px at -10% 70%, var(--mint) 0%, transparent 60%),
+        radial-gradient(600px 420px at 110% 80%, var(--yellow) 0%, transparent 60%);
+    }
+    .nav{backdrop-filter:saturate(140%) blur(8px); background:linear-gradient(180deg, rgba(255,236,243,.85), rgba(255,255,255,.65)); border-bottom:1px solid rgba(17,24,39,.08)}
+    .chip{display:inline-flex;align-items:center;gap:.5rem;border-radius:9999px;padding:.35rem .75rem;font-size:.75rem;font-weight:800;letter-spacing:.02em;background:linear-gradient(90deg,var(--pink),var(--lav));color:#432a59}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.8rem 1.1rem;border-radius:9999px;font-weight:800;transition:transform .08s ease, box-shadow .2s ease}
     .btn:active{transform:translateY(1px)}
-    .btn-candy{background:linear-gradient(90deg,var(--pink),var(--blue));color:#2b1d3b;box-shadow:0 6px 16px rgba(255,179,199,.35)}
-    .btn-candy:hover{box-shadow:0 10px 24px rgba(255,179,199,.45)}
-    .btn-outline{border:2px dashed rgba(15,23,42,.2);color:#0f172a;background:#fff}
-    .nav{backdrop-filter:saturate(140%) blur(8px);background:rgba(255,255,255,.7);border-bottom:1px solid rgba(15,23,42,.08)}
+    .btn-candy{background:linear-gradient(90deg, var(--pink), var(--blue)); color:#2b1d3b; box-shadow:0 6px 16px rgba(255,179,199,.35)}
+    .btn-outline{border:2px dashed rgba(17,24,39,.25); color:var(--ink); background:#fff}
     .badge{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#432a59}
     .pill{border-radius:9999px;padding:.2rem .6rem;background:var(--lav)}
     img{content-visibility:auto}
+
+    /* Presale-ish pills/buttons/card */
+    .ticker{background:#ffb3c7;color:#111827;font-weight:900;letter-spacing:.02em}
+    .ticker span{display:inline-block;padding:.55rem .9rem}
+    .pilltab{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .9rem;border-radius:14px;
+      background:#fff;border:2px solid #111827;box-shadow:3px 3px 0 #0001;font-weight:800}
+    .badge-dot{display:inline-flex;align-items:center;gap:.45rem;font-weight:800;
+      padding:.35rem .65rem;border-radius:9999px;background:var(--bubble);border:2px solid #111827}
+    .cta-card{border-radius:18px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.08);border:1.5px solid var(--line)}
+    .counter{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem}
+    .counter .box{background:#fff;border:2px solid #111827;border-radius:12px;text-align:center;padding:.6rem}
+    .counter .num{font-family:'Baloo 2';font-size:1.45rem;line-height:1}
+    .btn-fat{border:2px solid #111827;border-radius:12px;padding:.85rem 1rem;font-weight:900;box-shadow:3px 3px 0 #11182710}
+    .btn-fat-primary{background:linear-gradient(90deg,var(--pink),var(--blue))}
+    .btn-fat-secondary{background:#fff}
+
+    /* Cards */
+    .card{backdrop-filter:saturate(160%) blur(8px); background:rgba(255,255,255,.75); border:1px solid rgba(17,24,39,.08); border-radius:24px; box-shadow:0 10px 30px rgba(17,24,39,.08)}
+
+    /* Contest + Leaderboard chunky vibe */
+    .chunk-card{border:2px solid #111827;border-radius:16px;background:#fff;box-shadow:6px 6px 0 #11182710}
+    .chunk-title{font-family:'Baloo 2';}
   </style>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ZADDY Memeverse • Fan-Run Hub" />
+  <meta property="og:description" content="Make and share memes, join weekly contests. Unofficial fan site." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/images/og-cover.png" />
+  <meta name="twitter:card" content="summary_large_image" />
 </head>
 <body class="candy-bg min-h-screen">
+
+  <!-- NAV -->
   <header class="nav sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <a href="#top" class="flex items-center gap-3">
@@ -40,6 +79,7 @@
         <a href="#how" class="hover:underline">How</a>
         <a href="#gallery" class="hover:underline">Gallery</a>
         <a href="#contest" class="hover:underline">Daily Contest</a>
+        <a href="#leaderboard" class="hover:underline">Leaderboard</a>
       </nav>
       <div class="flex items-center gap-2">
         <a class="btn btn-outline" href="#community">Join</a>
@@ -47,27 +87,348 @@
       </div>
     </div>
   </header>
+
+  <!-- TOP TICKER -->
+  <div class="ticker border-b border-black/10">
+    <div class="max-w-7xl mx-auto overflow-x-auto whitespace-nowrap">
+      <span>THE ZADDY COIN ($ZADDY) PRESALE/ICO IS LIVE</span>
+      <span>• MOST VALUABLE TOKEN COMING TO THE XRPL</span>
+      <span>• COLLECTIBLES, DAPPS, MEMES, & STREETWEAR</span>
+      <span>• UNMATCHED SCALABILITY • GENEROUS REWARDS</span>
+    </div>
+  </div>
+
+  <!-- HERO -->
   <section id="top" class="pt-10 pb-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
+      <!-- Left -->
       <div>
-        <span class="chip mb-4">Fan-Run • Memes • Good Vibes</span>
+        <div class="badge-dot mb-4">Fan-Run • Memes • Good Vibes</div>
         <h1 class="h-font text-4xl md:text-5xl leading-tight">Make Memes. <span style="background:linear-gradient(90deg,var(--pink),var(--blue)); -webkit-background-clip:text; background-clip:text; color:transparent">Boost ZADDY.</span></h1>
-        <p class="mt-3 text-slate-700 text-lg">This is an <strong>unofficial</strong>, community-driven hub to create, share, and celebrate <strong>$ZADDY</strong> memes.</p>
-      </div>
-      <div>
-        <div class="card p-2">
+
+        <div class="flex flex-wrap gap-2 mt-4">
+          <div class="pilltab"><small>COLLECTIBLES</small></div>
+          <div class="pilltab"><small>DAPPS</small></div>
+          <div class="pilltab"><small>MEMES</small></div>
+          <div class="pilltab"><small>STREETWEAR</small></div>
+        </div>
+
+        <p class="mt-4 text-slate-700 text-lg">This is an <strong>unofficial</strong>, community-driven hub to create, share, and celebrate <strong>$ZADDY</strong> memes. No financial advice. Just culture, contests, and fun.</p>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a class="btn-fat btn-fat-primary" href="#create">Create a Meme</a>
+          <a class="btn-fat btn-fat-secondary" href="#gallery">View Gallery</a>
+        </div>
+
+        <div class="mt-6">
           <img src="/images/hero-demo.png" class="rounded-2xl w-full h-auto" alt="ZADDY fan preview" />
+          <p class="text-xs text-slate-600 mt-2">Replace <code>/images/hero-demo.png</code> with your banner art.</p>
+        </div>
+      </div>
+
+      <!-- Right CTA (presale-style) -->
+      <aside class="cta-card p-5 lg:sticky lg:top-20">
+        <h3 class="h-font text-xl">JOIN THE ZADDY COMMUNITY</h3>
+        <p class="text-sm text-slate-600 mb-3">Next price check in:</p>
+
+        <div class="counter mb-3" id="countdown" data-deadline="2025-12-31T23:59:59Z">
+          <div class="box"><div class="num" id="dd">00</div><div class="text-xs">DAYS</div></div>
+          <div class="box"><div class="num" id="hh">00</div><div class="text-xs">HOURS</div></div>
+          <div class="box"><div class="num" id="mm">00</div><div class="text-xs">MINUTES</div></div>
+          <div class="box"><div class="num" id="ss">00</div><div class="text-xs">SECONDS</div></div>
+        </div>
+
+        <div class="text-xs text-slate-600 mb-4">
+          Your purchased $ZADDY: <strong>1,930,030</strong> • Stakeable: <strong>0</strong>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <a class="btn-fat btn-fat-primary text-center" href="https://presale.zaddycoin.io" target="_blank" rel="noopener">
+            BUY AND STAKE (Presale)
+          </a>
+          <a class="btn-fat btn-fat-secondary text-center" href="#links">
+            OFFICIAL LINKS
+          </a>
+        </div>
+
+        <p class="text-[11px] text-slate-500 mt-3">
+          Fan site. Not financial advice. Always DYOR. All presale actions occur on the official website.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="h-font text-3xl md:text-4xl mb-6">How it Works</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="chunk-card p-6">
+          <div class="pill badge">Step 1</div>
+          <h3 class="h-font text-xl mt-2">Create or Upload</h3>
+          <p class="mt-2">Drop your PNG/JPG or use templates. Get a shareable link instantly.</p>
+        </div>
+        <div class="chunk-card p-6">
+          <div class="pill badge">Step 2</div>
+          <h3 class="h-font text-xl mt-2">Share & Tag</h3>
+          <p class="mt-2">Post on X/TikTok/IG with <strong>#ZaddyMeme</strong>. Rally your squad.</p>
+        </div>
+        <div class="chunk-card p-6">
+          <div class="pill badge">Step 3</div>
+          <h3 class="h-font text-xl mt-2">Climb the Board</h3>
+          <p class="mt-2">Top memes get spotlighted weekly. Tips & boosts coming in Phase 2.</p>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- CREATE CTA -->
+  <section id="create" class="pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="chunk-card p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <h3 class="h-font text-2xl">Ready to post your first meme?</h3>
+          <p class="mt-1">Upload to the gallery folder and add filenames to the <code>IMAGES</code> list. Zero backend needed.</p>
+        </div>
+        <div class="flex gap-3">
+          <a class="btn-fat btn-fat-primary" href="#gallery">Upload Meme</a>
+          <a class="btn-fat btn-fat-secondary" href="#contest">See Daily Contest</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between gap-4 mb-4">
+        <h2 class="h-font text-3xl md:text-4xl">Community Gallery</h2>
+        <div class="text-sm text-slate-600">Add images to <code>/images/gallery/</code> and list in <code>IMAGES</code>.</div>
+      </div>
+      <div id="gallery-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3"></div>
+      <div class="mt-6 text-center">
+        <button id="loadMoreBtn" class="btn-fat btn-fat-secondary">Load more</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEMPLATE OF THE DAY -->
+  <section id="templates" class="pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="chunk-card p-6 md:p-8">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div>
+            <h3 class="h-font text-2xl md:text-3xl">Template of the Day</h3>
+            <p class="mt-2 text-slate-700">Download a fresh pastel frame and start memeing. Files are optimized for social (1080×1080 PNG).</p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a id="tod-download" class="btn-fat btn-fat-primary" href="/templates/zaddy-template-1.png" download>Download Template</a>
+            <button id="tod-copy" class="btn-fat btn-fat-secondary">Copy Tweet Text</button>
+          </div>
+        </div>
+        <p class="text-xs text-slate-600 mt-2">Place templates in <code>/templates/</code> (e.g., <code>zaddy-template-1.png</code>). The button above will download the current one.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTEST (DAILY) – Restyled -->
+  <section id="contest" class="pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-6 items-start">
+        <div class="chunk-card p-6 md:p-8">
+          <span class="chip">Daily Meme Contest</span>
+          <h3 class="h-font text-2xl md:text-3xl mt-2">#ZaddyDaily — Create Today, Win Today</h3>
+          <ul class="mt-3 list-disc list-inside space-y-1">
+            <li><strong>Reset:</strong> Every day at 23:59:59 UTC</li>
+            <li><strong>How to enter:</strong> Post on X with <strong>#ZaddyMeme</strong> & <strong>#ZaddyDaily</strong> and paste your link in the submission form</li>
+            <li><strong>Winners:</strong> Top community-voted entries featured on homepage + Discord</li>
+          </ul>
+          <div class="mt-4 flex flex-wrap gap-3 items-center">
+            <a class="btn-fat btn-fat-primary" href="#submit">Submit Now</a>
+            <span class="badge pill">Time left today: <span id="daily-countdown" class="ml-1 font-bold">--:--:--</span></span>
+          </div>
+          <p class="text-xs text-slate-600 mt-3">Tip: Engagement on X helps visibility; winners are curated from submissions.</p>
+        </div>
+        <div>
+          <img src="/images/contest-card.png" class="rounded-2xl w-full h-auto chunk-card border-0" alt="Contest card" />
+          <p class="text-xs text-slate-600 mt-2">Replace <code>/images/contest-card.png</code> as your daily theme art.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEADERBOARD – Restyled -->
+  <section id="leaderboard" class="pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="h-font text-3xl md:text-4xl mb-6">Leaderboard</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="chunk-card p-6"><div class="h-font text-4xl">🥇</div><h4 class="chunk-title text-xl mt-2">@handle_one</h4><p>“Meme Title One” — 12,340 votes</p></div>
+        <div class="chunk-card p-6"><div class="h-font text-4xl">🥈</div><h4 class="chunk-title text-xl mt-2">@handle_two</h4><p>“Meme Title Two” — 9,210 votes</p></div>
+        <div class="chunk-card p-6"><div class="h-font text-4xl">🥉</div><h4 class="chunk-title text-xl mt-2">@handle_three</h4><p>“Meme Title Three” — 7,880 votes</p></div>
+      </div>
+      <p class="text-sm text-slate-600 mt-3">Update weekly. You can swap this for a Google Sheet embed later.</p>
+    </div>
+  </section>
+
+  <!-- BUY / LINKS (Unofficial) -->
+  <section id="links" class="pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="chunk-card p-8 text-center">
+        <h3 class="h-font text-2xl md:text-3xl">Official Links</h3>
+        <p class="mt-2 text-slate-700">Add only verified links here. This site is <strong>fan-run</strong> and not affiliated.</p>
+        <div class="mt-5 flex flex-wrap items-center justify-center gap-3">
+          <a class="btn-fat btn-fat-primary" href="https://presale.zaddycoin.io" target="_blank" rel="noopener">Official Presale</a>
+          <a class="btn-fat btn-fat-secondary" href="#" target="_blank" rel="noopener">Whitepaper</a>
+          <a class="btn-fat btn-fat-secondary" href="#" target="_blank" rel="noopener">Telegram</a>
+        </div>
+        <p class="text-xs text-slate-500 mt-3">Not financial advice. DYOR.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="h-font text-3xl md:text-4xl mb-6">FAQ</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <details class="chunk-card p-6" open>
+          <summary class="h-font cursor-pointer">Is this official?</summary>
+          <p class="mt-2">No. This is an <strong>unofficial, fan-run</strong> community page to celebrate ZADDY culture. We don’t sell tokens and we don’t provide financial advice.</p>
+        </details>
+        <details class="chunk-card p-6">
+          <summary class="h-font cursor-pointer">How do I add memes to the gallery?</summary>
+          <p class="mt-2">Upload images to <code>/images/gallery/</code> and list filenames in the <code>IMAGES</code> array at the bottom of this file—or use <code>memes.json</code>.</p>
+        </details>
+        <details class="chunk-card p-6">
+          <summary class="h-font cursor-pointer">How are winners chosen?</summary>
+          <p class="mt-2">By community voting and manual curation for now. On-chain boosts and tipping are planned for a future phase.</p>
+        </details>
+        <details class="chunk-card p-6">
+          <summary class="h-font cursor-pointer">Financial advice?</summary>
+          <p class="mt-2">None here. Memes only. Please do your own research.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUBMISSION -->
+  <section id="submit" class="pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="chunk-card p-6 md:p-8">
+        <h3 class="h-font text-2xl md:text-3xl">Submit Your Meme (Daily)</h3>
+        <p class="mt-2 text-slate-700">This site is static (GitHub Pages), so submissions use an external form. Replace the placeholder link below with your own <strong>Google Form</strong> (or Typeform). Until then, you can submit via mailto as a fallback.</p>
+
+        <div class="mt-4 grid md:grid-cols-2 gap-6">
+          <!-- Option A: Google Form (replace URL) -->
+          <div class="chunk-card p-5">
+            <h4 class="h-font text-xl">Option A — Google Form</h4>
+            <p class="mt-2">Create a form with fields: Handle, Meme URL (X post), Optional caption. Then paste the share URL here:</p>
+            <a id="formLink" class="btn-fat btn-fat-primary mt-3" href="https://example.com/your-google-form" target="_blank" rel="noopener">Open Submission Form</a>
+            <p class="text-xs text-slate-600 mt-2">Edit the href of <code>#formLink</code> when your form is live.</p>
+          </div>
+
+          <!-- Option B: Mailto fallback -->
+          <div class="chunk-card p-5">
+            <h4 class="h-font text-xl">Option B — Email Fallback</h4>
+            <p class="mt-2">Click below to prefill an email to the mods with your entry link.</p>
+            <a class="btn-fat btn-fat-secondary mt-3" id="mailtoBtn" href="#">Email My Submission</a>
+            <label class="block mt-4 text-sm">Your X (Twitter) post URL
+              <input id="tweetUrl" type="url" placeholder="https://x.com/yourhandle/status/123" class="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2" />
+            </label>
+          </div>
+        </div>
+
+        <p class="mt-6 text-xs text-slate-600">By submitting you agree that your meme may be reposted on our social channels and site. Don’t upload copyrighted or hateful content.</p>
+      </div>
+    </div>
+  </section>
+
   <footer class="border-t border-slate-200/60">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-sm text-slate-600 text-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-sm text-slate-600 flex flex-col md:flex-row items-center justify-between gap-3">
       <div>© <span id="year"></span> ZADDY Memeverse — Fan-Run • Unofficial</div>
+      <div class="flex items-center gap-4">
+        <a href="#faq" class="hover:underline">FAQ</a>
+        <a href="#links" class="hover:underline">Official Links</a>
+        <a href="#" class="hover:underline">Privacy</a>
+      </div>
     </div>
   </footer>
+
+  <!-- Scripts -->
   <script>
-    const yEl=document.getElementById('year');if(yEl)yEl.textContent=new Date().getFullYear();
+    // Footer year
+    const yEl=document.getElementById('year'); if (yEl) yEl.textContent=new Date().getFullYear();
+
+    // Presale-style countdown
+    (function(){
+      const root = document.getElementById('countdown'); if(!root) return;
+      const dl = root.getAttribute('data-deadline'); const deadline = dl ? new Date(dl) : null;
+      function tick(){
+        const now = new Date();
+        const end = deadline && deadline > now ? deadline : new Date(now.getTime()+3*24*3600*1000); // 3-day rolling fallback
+        const s = Math.max(0, Math.floor((end - now)/1000));
+        const d = Math.floor(s/86400), h = Math.floor((s%86400)/3600), m = Math.floor((s%3600)/60), ss = s%60;
+        const set=(id,v)=>{const el=document.getElementById(id); if(el) el.textContent = String(v).padStart(2,'0');}
+        set('dd',d); set('hh',h); set('mm',m); set('ss',ss);
+      }
+      tick(); setInterval(tick,1000);
+    })();
+
+    // Daily contest countdown (to 23:59:59 UTC)
+    function updateDailyCountdown(){
+      const el = document.getElementById('daily-countdown'); if(!el) return;
+      const now = new Date();
+      const next = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), 23,59,59,999));
+      if (next - now < 0) next.setUTCDate(next.getUTCDate()+1);
+      const s = Math.floor((next-now)/1000);
+      const hh=String(Math.floor(s/3600)).padStart(2,'0');
+      const mm=String(Math.floor((s%3600)/60)).padStart(2,'0');
+      const ss=String(s%60).padStart(2,'0');
+      el.textContent = `${hh}:${mm}:${ss}`;
+    }
+    setInterval(updateDailyCountdown,1000); updateDailyCountdown();
+
+    // Mailto fallback
+    const mailBtn = document.getElementById('mailtoBtn');
+    if (mailBtn) {
+      mailBtn.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const url = (document.getElementById('tweetUrl')||{}).value||'';
+        const subject = encodeURIComponent('ZADDY Daily Meme Submission');
+        const body = encodeURIComponent(`Handle: @yourhandle\nMeme URL: ${url}\nHashtags: #ZaddyMeme #ZaddyDaily`);
+        window.location.href = `mailto:mods@yoursite.tld?subject=${subject}&body=${body}`;
+      });
+    }
+
+    // Template: copy tweet & daily file rotate
+    function toast(msg){const t=document.createElement('div');t.textContent=msg;t.className='fixed bottom-5 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-black/80 text-white text-sm shadow';document.body.appendChild(t);setTimeout(()=>t.remove(),2200)}
+    const copyBtn = document.getElementById('tod-copy');
+    const dlBtn = document.getElementById('tod-download');
+    if (copyBtn) copyBtn.addEventListener('click', async ()=>{try{await navigator.clipboard.writeText('I just made a #ZaddyMeme for #ZaddyDaily — join the fan-run meme hub and post yours!');toast('Tweet text copied ✅')}catch(e){toast('Copy failed — copy manually')}})
+    if (dlBtn) {const d=new Date(), y=d.getUTCFullYear(), m=String(d.getUTCMonth()+1).padStart(2,'0'), day=String(d.getUTCDate()).padStart(2,'0'); const candidate=`/templates/zaddy-template-${y}${m}${day}.png`; fetch(candidate,{method:'HEAD'}).then(r=>{if(r.ok){dlBtn.href=candidate}})}
+
+    // Gallery loader (memes.json if present, fallback to IMAGES[])
+    const grid=document.getElementById('gallery-grid'); const loadMoreBtn=document.getElementById('loadMoreBtn');
+    let items=[]; let page=0; const pageSize=16;
+    const IMAGES=[ /* 'meme-01.jpg','meme-02.png' */ ];
+    function renderPage(){
+      const slice = items.slice(page*pageSize, (page+1)*pageSize);
+      slice.forEach(item=>{
+        const name = typeof item==='string'? item : (item.image||'');
+        const href = typeof item==='string'? `/images/gallery/${name}` : (item.post || name.replace(/^images\//,'/images/'));
+        const src  = typeof item==='string'? `/images/gallery/${name}` : name.replace(/^images\//,'/images/');
+        const a=document.createElement('a'); a.href=href; a.target='_blank'; a.rel='noopener'; a.className='block overflow-hidden rounded-2xl border border-slate-200/70 bg-white hover:border-pink-300';
+        const img=document.createElement('img'); img.loading='lazy'; img.alt='meme'; img.src=src; img.className='w-full h-40 object-cover';
+        a.appendChild(img); grid.appendChild(a);
+      });
+      page++; if (page*pageSize >= items.length && loadMoreBtn) loadMoreBtn.style.display='none';
+    }
+    async function loadMemes(){
+      try{const res=await fetch('/memes.json',{cache:'no-store'}); if(res.ok){const json=await res.json(); if(Array.isArray(json)&&json.length){items=json; return;}}}catch(e){}
+      if(IMAGES&&IMAGES.length){items=IMAGES;}
+    }
+    function resetGallery(){page=0; if(grid) grid.innerHTML=''; if(items.length){renderPage();} else {if(loadMoreBtn) loadMoreBtn.style.display='none'; const empty=document.createElement('div'); empty.className='text-center text-slate-600'; empty.innerHTML='Add images to <code>/images/gallery/</code> or set up <code>memes.json</code> to auto-populate.'; grid.appendChild(empty);}}
+    if (grid){ loadMemes().then(()=>resetGallery()); if(loadMoreBtn) loadMoreBtn.addEventListener('click',renderPage); setInterval(async()=>{const oldLen=items.length; await loadMemes(); if(items.length!==oldLen){resetGallery();}},30000); }
   </script>
 </body>
 </html>
