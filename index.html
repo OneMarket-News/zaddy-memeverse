@@ -15,9 +15,10 @@
     :root{
       --pink:#ffb3c7; --blue:#bfe2ff; --mint:#baf7d5; --yellow:#fff4a3; --lav:#d7c8ff; --ink:#111827;
       --bubble:#ffe5ed; --line:#e9d7f0;
+      --ticker-h:56px; /* fixed ticker height */
     }
     html{scroll-behavior:smooth}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:#fff;color:var(--ink)}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:#fff;color:var(--ink); padding-top:var(--ticker-h);} /* push content below fixed ticker */
     .h-font{font-family:'Baloo 2',system-ui,-apple-system}
     .candy-bg{
       background:
@@ -37,10 +38,8 @@
     img{content-visibility:auto}
 
     /* Presale-ish pills/buttons/card */
-    .pilltab{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .9rem;border-radius:14px;
-      background:#fff;border:2px solid #111827;box-shadow:3px 3px 0 #0001;font-weight:800}
-    .badge-dot{display:inline-flex;align-items:center;gap:.45rem;font-weight:800;
-      padding:.35rem .65rem;border-radius:9999px;background:var(--bubble);border:2px solid #111827}
+    .pilltab{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .9rem;border-radius:14px; background:#fff;border:2px solid #111827;box-shadow:3px 3px 0 #0001;font-weight:800}
+    .badge-dot{display:inline-flex;align-items:center;gap:.45rem;font-weight:800; padding:.35rem .65rem;border-radius:9999px;background:var(--bubble);border:2px solid #111827}
     .cta-card{border-radius:18px;background:#fff;box-shadow:0 16px 40px rgba(0,0,0,.08);border:1.5px solid var(--line)}
     .counter{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.5rem}
     .counter .box{background:#fff;border:2px solid #111827;border-radius:12px;text-align:center;padding:.6rem}
@@ -56,24 +55,22 @@
     .chunk-card{border:2px solid #111827;border-radius:16px;background:#fff;box-shadow:6px 6px 0 #11182710}
     .chunk-title{font-family:'Baloo 2';}
 
-    /* === Modern scrolling ticker (Option A) === */
-    .ticker{
-      --speed: 35s; /* adjust speed (smaller = faster) */
-      background:#ffb3c7; color:#111827; border-bottom:1px solid #0001;
-      overflow:hidden; white-space:nowrap; position:relative;
+    /* === Fixed, presale-matched scrolling ticker === */
+    .ticker{ /* fixed to top */
+      --speed:32s; --height:56px; --size:16px; --gap:48px;
+      position:fixed; top:0; left:0; right:0; z-index:9999;
+      background:#ffb3c7; color:#111827; border-bottom:1px solid rgba(0,0,0,.08);
+      overflow:hidden; width:100%;
     }
-    .ticker__fade{
-      pointer-events:none; position:absolute; inset:0;
-      background:linear-gradient(90deg, #ffb3c7 0, transparent 80px),
-                 linear-gradient(270deg,#ffb3c7 0, transparent 80px);
-      mask: linear-gradient(90deg, #0000, #000 60px calc(100% - 60px), #0000);
-    }
-    .ticker__track{ display:flex; gap:2rem; width:max-content; animation:ticker var(--speed) linear infinite; }
-    .ticker__item{ padding:.6rem 0; font-weight:900; letter-spacing:.02em; }
-    .ticker__dot::before{ content:"•"; margin:0 .75rem; opacity:.7 }
-    .ticker:hover .ticker__track{ animation-play-state:paused; }
-    @media (prefers-reduced-motion: reduce){ .ticker__track{ animation:none; } }
-    @keyframes ticker{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .ticker__container{ max-width:none; padding-left:16px; padding-right:16px; }
+    .ticker__inner{ display:flex; align-items:center; height:var(--height); line-height:var(--height); white-space:nowrap; font-weight:900; font-size:var(--size); letter-spacing:.02em; text-transform:uppercase; animation:tickerMove var(--speed) linear infinite; will-change:transform; }
+    .ticker__inner>span{ padding-right:var(--gap); }
+    .ticker__dot::before{ content:"•"; margin:0 .6rem; opacity:.7 }
+    .ticker__fade{ pointer-events:none; position:absolute; inset:0; background:linear-gradient(90deg,#ffb3c7 0,transparent 80px), linear-gradient(270deg,#ffb3c7 0,transparent 80px); mask:linear-gradient(90deg,#0000,#000 60px calc(100% - 60px),#0000); }
+    .ticker:hover .ticker__inner{ animation-play-state:paused }
+    @media (prefers-reduced-motion:reduce){ .ticker__inner{ animation:none } }
+    @media (max-width:768px){ .ticker{ --height:44px; --size:13px; --gap:28px; --speed:28s } body{ padding-top:var(--height) } }
+    @keyframes tickerMove{ from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
   </style>
 
   <!-- Open Graph -->
@@ -85,8 +82,30 @@
 </head>
 <body class="candy-bg min-h-screen">
 
+  <!-- FIXED TOP TICKER -->
+  <div class="ticker">
+    <div class="ticker__fade"></div>
+    <div class="ticker__container">
+      <div class="ticker__inner">
+        <span>THE ZADDY COIN ($ZADDY) PRESALE/ICO IS LIVE</span>
+        <span class="ticker__dot">MOST VALUABLE TOKEN COMING TO THE XRPL</span>
+        <span class="ticker__dot">COLLECTIBLES, DAPPS, MEMES, AND STREETWEAR</span>
+        <span class="ticker__dot">CROSS-CHAIN AND MULTI-CHAIN ERC-20 TOKEN</span>
+        <span class="ticker__dot">UNMATCHED SCALABILITY</span>
+        <span class="ticker__dot">GENEROUS REWARDS</span>
+        <!-- duplicate for seamless loop -->
+        <span>THE ZADDY COIN ($ZADDY) PRESALE/ICO IS LIVE</span>
+        <span class="ticker__dot">MOST VALUABLE TOKEN COMING TO THE XRPL</span>
+        <span class="ticker__dot">COLLECTIBLES, DAPPS, MEMES, AND STREETWEAR</span>
+        <span class="ticker__dot">CROSS-CHAIN AND MULTI-CHAIN ERC-20 TOKEN</span>
+        <span class="ticker__dot">UNMATCHED SCALABILITY</span>
+        <span class="ticker__dot">GENEROUS REWARDS</span>
+      </div>
+    </div>
+  </div>
+
   <!-- NAV -->
-  <header class="nav sticky top-0 z-50">
+  <header class="nav sticky top-0 z-40"> <!-- z-40 so it stays below fixed ticker -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <a href="#top" class="flex items-center gap-3">
         <span class="h-9 w-9 rounded-2xl flex items-center justify-center" style="background:linear-gradient(135deg,var(--pink),var(--blue))"><span class="h-font text-xl">Z</span></span>
@@ -105,86 +124,38 @@
     </div>
   </header>
 
-  <!-- TOP TICKER (infinite scroll) -->
-  <div class="ticker">
-    <div class="max-w-7xl mx-auto relative">
-      <div class="ticker__fade"></div>
-      <div class="ticker__track">
-        <div class="ticker__row flex gap-8">
-          <span class="ticker__item">THE ZADDY COIN ($ZADDY) PRESALE/ICO IS LIVE</span>
-          <span class="ticker__item ticker__dot">MOST VALUABLE TOKEN COMING TO THE XRPL</span>
-          <span class="ticker__item ticker__dot">COLLECTIBLES, DAPPS, MEMES, &amp; STREETWEAR</span>
-          <span class="ticker__item ticker__dot">UNMATCHED SCALABILITY</span>
-          <span class="ticker__item ticker__dot">GENEROUS REWARDS</span>
-        </div>
-        <!-- duplicate for seamless loop -->
-        <div class="ticker__row flex gap-8" aria-hidden="true">
-          <span class="ticker__item">THE ZADDY COIN ($ZADDY) PRESALE/ICO IS LIVE</span>
-          <span class="ticker__item ticker__dot">MOST VALUABLE TOKEN COMING TO THE XRPL</span>
-          <span class="ticker__item ticker__dot">COLLECTIBLES, DAPPS, MEMES, &amp; STREETWEAR</span>
-          <span class="ticker__item ticker__dot">UNMATCHED SCALABILITY</span>
-          <span class="ticker__item ticker__dot">GENEROUS REWARDS</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- HERO -->
   <section id="top" class="pt-10 pb-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
-      <!-- Left -->
       <div>
         <div class="badge-dot mb-4">Fan-Run • Memes • Good Vibes</div>
-        <h1 class="h-font text-4xl md:text-5xl leading-tight">Make Memes. <span style="background:linear-gradient(90deg,var(--pink),var(--blue)); -webkit-background-clip:text; background-clip:text; color:transparent">Boost ZADDY.</span></h1>
-
-        <div class="flex flex-wrap gap-2 mt-4">
-          <div class="pilltab"><small>COLLECTIBLES</small></div>
-          <div class="pilltab"><small>DAPPS</small></div>
-          <div class="pilltab"><small>MEMES</small></div>
-          <div class="pilltab"><small>STREETWEAR</small></div>
-        </div>
-
-        <p class="mt-4 text-slate-700 text-lg">This is an <strong>unofficial</strong>, community-driven hub to create, share, and celebrate <strong>$ZADDY</strong> memes. No financial advice. Just culture, contests, and fun.</p>
-
+        <h1 class="h-font text-4xl md:text-5xl leading-tight">WELCOME TO THE ZADDY COIN ($ZADDY) PRESALE</h1>
+        <p class="mt-2 text-xl md:text-2xl font-extrabold">THE MOST VALUABLE TOKEN COMING TO THE XRPL</p>
+        <p class="mt-4 text-slate-700 text-lg">Zaddy Coin, powered by the $ZADDY multi-utility token, is Web3’s ultimate glow-up: a cross-chain meme coin, lifestyle brand, and DeFi powerhouse. <em>Fan-run hub — no financial advice.</em></p>
         <div class="mt-6 flex flex-wrap gap-3">
           <a class="btn-fat btn-fat-primary" href="#create">Create a Meme</a>
           <a class="btn-fat btn-fat-secondary" href="#gallery">View Gallery</a>
         </div>
-
         <div class="mt-6">
           <img src="/images/hero-demo.png" class="rounded-2xl w-full h-auto" alt="ZADDY fan preview" />
           <p class="text-xs text-slate-600 mt-2">Replace <code>/images/hero-demo.png</code> with your banner art.</p>
         </div>
       </div>
-
-      <!-- Right CTA (presale-style) -->
       <aside class="cta-card p-5 lg:sticky lg:top-20">
         <h3 class="h-font text-xl">JOIN THE ZADDY COMMUNITY</h3>
         <p class="text-sm text-slate-600 mb-3">Next price check in:</p>
-
         <div class="counter mb-3" id="countdown" data-deadline="2025-12-31T23:59:59Z">
           <div class="box"><div class="num" id="dd">00</div><div class="text-xs">DAYS</div></div>
           <div class="box"><div class="num" id="hh">00</div><div class="text-xs">HOURS</div></div>
           <div class="box"><div class="num" id="mm">00</div><div class="text-xs">MINUTES</div></div>
           <div class="box"><div class="num" id="ss">00</div><div class="text-xs">SECONDS</div></div>
         </div>
-
-        <div class="text-xs text-slate-600 mb-4">
-          Your purchased $ZADDY: <strong>1,930,030</strong> • Stakeable: <strong>0</strong>
-        </div>
-
+        <div class="text-xs text-slate-600 mb-4">Your purchased $ZADDY: <strong>1,930,030</strong> • Stakeable: <strong>0</strong></div>
         <div class="flex flex-col gap-2">
-          <a class="btn-fat btn-fat-primary text-center" href="https://presale.zaddycoin.io" target="_blank" rel="noopener">
-            BUY AND STAKE (Presale)
-          </a>
-          <a class="btn-fat btn-fat-secondary text-center" href="#links">
-            OFFICIAL LINKS
-          </a>
+          <a class="btn-fat btn-fat-primary text-center" href="https://presale.zaddycoin.io" target="_blank" rel="noopener">BUY AND STAKE (Presale)</a>
+          <a class="btn-fat btn-fat-secondary text-center" href="#links">OFFICIAL LINKS</a>
         </div>
-
-        <p class="text-[11px] text-slate-500 mt-3">
-          Fan site. Not financial advice. Always DYOR. All presale actions occur on the official website.
-        </p>
+        <p class="text-[11px] text-slate-500 mt-3">Fan site. Not financial advice. Always DYOR. All presale actions occur on the official website.</p>
       </aside>
     </div>
   </section>
@@ -194,21 +165,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="h-font text-3xl md:text-4xl mb-6">How it Works</h2>
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="chunk-card p-6">
-          <div class="pill badge">Step 1</div>
-          <h3 class="h-font text-xl mt-2">Create or Upload</h3>
-          <p class="mt-2">Drop your PNG/JPG or use templates. Get a shareable link instantly.</p>
-        </div>
-        <div class="chunk-card p-6">
-          <div class="pill badge">Step 2</div>
-          <h3 class="h-font text-xl mt-2">Share & Tag</h3>
-          <p class="mt-2">Post on X/TikTok/IG with <strong>#ZaddyMeme</strong>. Rally your squad.</p>
-        </div>
-        <div class="chunk-card p-6">
-          <div class="pill badge">Step 3</div>
-          <h3 class="h-font text-xl mt-2">Climb the Board</h3>
-          <p class="mt-2">Top memes get spotlighted weekly. Tips & boosts coming in Phase 2.</p>
-        </div>
+        <div class="chunk-card p-6"><div class="pill badge">Step 1</div><h3 class="h-font text-xl mt-2">Create or Upload</h3><p class="mt-2">Drop your PNG/JPG or use templates. Get a shareable link instantly.</p></div>
+        <div class="chunk-card p-6"><div class="pill badge">Step 2</div><h3 class="h-font text-xl mt-2">Share & Tag</h3><p class="mt-2">Post on X/TikTok/IG with <strong>#ZaddyMeme</strong>. Rally your squad.</p></div>
+        <div class="chunk-card p-6"><div class="pill badge">Step 3</div><h3 class="h-font text-xl mt-2">Climb the Board</h3><p class="mt-2">Top memes get spotlighted weekly. Tips & boosts coming in Phase 2.</p></div>
       </div>
     </div>
   </section>
@@ -237,9 +196,7 @@
         <div class="text-sm text-slate-600">Add images to <code>/images/gallery/</code> and list in <code>IMAGES</code>.</div>
       </div>
       <div id="gallery-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3"></div>
-      <div class="mt-6 text-center">
-        <button id="loadMoreBtn" class="btn-fat btn-fat-secondary">Load more</button>
-      </div>
+      <div class="mt-6 text-center"><button id="loadMoreBtn" class="btn-fat btn-fat-secondary">Load more</button></div>
     </div>
   </section>
 
@@ -262,7 +219,7 @@
     </div>
   </section>
 
-  <!-- CONTEST (DAILY) – Restyled -->
+  <!-- CONTEST (DAILY) -->
   <section id="contest" class="pb-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-6 items-start">
@@ -288,7 +245,7 @@
     </div>
   </section>
 
-  <!-- LEADERBOARD – Restyled -->
+  <!-- LEADERBOARD -->
   <section id="leaderboard" class="pb-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="h-font text-3xl md:text-4xl mb-6">Leaderboard</h2>
@@ -348,17 +305,13 @@
       <div class="chunk-card p-6 md:p-8">
         <h3 class="h-font text-2xl md:text-3xl">Submit Your Meme (Daily)</h3>
         <p class="mt-2 text-slate-700">This site is static (GitHub Pages), so submissions use an external form. Replace the placeholder link below with your own <strong>Google Form</strong> (or Typeform). Until then, you can submit via mailto as a fallback.</p>
-
         <div class="mt-4 grid md:grid-cols-2 gap-6">
-          <!-- Option A: Google Form (replace URL) -->
           <div class="chunk-card p-5">
             <h4 class="h-font text-xl">Option A — Google Form</h4>
             <p class="mt-2">Create a form with fields: Handle, Meme URL (X post), Optional caption. Then paste the share URL here:</p>
             <a id="formLink" class="btn-fat btn-fat-primary mt-3" href="https://example.com/your-google-form" target="_blank" rel="noopener">Open Submission Form</a>
             <p class="text-xs text-slate-600 mt-2">Edit the href of <code>#formLink</code> when your form is live.</p>
           </div>
-
-          <!-- Option B: Mailto fallback -->
           <div class="chunk-card p-5">
             <h4 class="h-font text-xl">Option B — Email Fallback</h4>
             <p class="mt-2">Click below to prefill an email to the mods with your entry link.</p>
@@ -368,7 +321,6 @@
             </label>
           </div>
         </div>
-
         <p class="mt-6 text-xs text-slate-600">By submitting you agree that your meme may be reposted on our social channels and site. Don’t upload copyrighted or hateful content.</p>
       </div>
     </div>
@@ -396,7 +348,7 @@
       const dl = root.getAttribute('data-deadline'); const deadline = dl ? new Date(dl) : null;
       function tick(){
         const now = new Date();
-        const end = deadline && deadline > now ? deadline : new Date(now.getTime()+3*24*3600*1000); // 3-day rolling fallback
+        const end = deadline && deadline > now ? deadline : new Date(now.getTime()+3*24*3600*1000);
         const s = Math.max(0, Math.floor((end - now)/1000));
         const d = Math.floor(s/86400), h = Math.floor((s%86400)/3600), m = Math.floor((s%3600)/60), ss = s%60;
         const set=(id,v)=>{const el=document.getElementById(id); if(el) el.textContent = String(v).padStart(2,'0');}
@@ -458,8 +410,8 @@
       try{const res=await fetch('/memes.json',{cache:'no-store'}); if(res.ok){const json=await res.json(); if(Array.isArray(json)&&json.length){items=json; return;}}}catch(e){}
       if(IMAGES&&IMAGES.length){items=IMAGES;}
     }
-    function resetGallery(){page=0; if(grid) grid.innerHTML=''; if(items.length){renderPage();} else {if(loadMoreBtn) loadMoreBtn.style.display='none'; const empty=document.createElement('div'); empty.className='text-center text-slate-600'; empty.innerHTML='Add images to <code>/images/gallery/</code> or set up <code>memes.json</code> to auto-populate.'; grid.appendChild(empty);}}
-    if (grid){ loadMemes().then(()=>resetGallery()); if(loadMoreBtn) loadMoreBtn.addEventListener('click',renderPage); setInterval(async()=>{const oldLen=items.length; await loadMemes(); if(items.length!==oldLen){resetGallery();}},30000); }
+    function resetGallery(){ page=0; if(grid) grid.innerHTML=''; if(items.length){renderPage();} else { if(loadMoreBtn) loadMoreBtn.style.display='none'; const empty=document.createElement('div'); empty.className='text-center text-slate-600'; empty.innerHTML='Add images to <code>/images/gallery/</code> or set up <code>memes.json</code> to auto-populate.'; grid.appendChild(empty); }}
+    if (grid){ loadMemes().then(()=>{ resetGallery(); }); if (loadMoreBtn) loadMoreBtn.addEventListener('click', renderPage); setInterval(async()=>{ const oldLen=items.length; await loadMemes(); if(items.length!==oldLen){ resetGallery(); } }, 30000); }
   </script>
 </body>
 </html>
