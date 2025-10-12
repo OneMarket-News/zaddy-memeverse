@@ -248,29 +248,70 @@
     </div>
   </section>
 
-  <!-- ================== HOW ================== -->
-  <section id="how" class="pb-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="h-font text-3xl md:text-4xl mb-6">How it Works</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="card p-6">
-          <div class="pill badge">Step 1</div>
-          <h3 class="h-font text-xl mt-2">Create or Upload</h3>
-          <p class="mt-2">Drop your PNG/JPG or use templates. Get a shareable link instantly.</p>
+<!-- ================== HOW ================== -->
+<section id="how" class="pb-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="h-font text-3xl md:text-4xl mb-6">How it Works</h2>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- STEP 1 -->
+      <article class="card p-6 group transition-transform hover:-translate-y-1">
+        <div class="flex items-center gap-2">
+          <span class="pill badge">Step 1</span>
+          <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-[var(--lblue)] border border-slate-200">
+            <!-- wallet/upload icon -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 15v-4l5-5 5 5v4" stroke="#0f172a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="4" y="15" width="16" height="5" rx="2" stroke="#0f172a" stroke-width="1.8"/>
+            </svg>
+          </span>
         </div>
-        <div class="card p-6">
-          <div class="pill badge">Step 2</div>
-          <h3 class="h-font text-xl mt-2">Share & Tag</h3>
-          <p class="mt-2">Post on X/TikTok/IG with <strong>#ZaddyMeme</strong>. Rally your squad.</p>
+        <h3 class="h-font text-xl mt-3">Create</h3>
+        <p class="mt-1 text-slate-700">Upload a PNG/JPG or use a template. Get a shareable link instantly.</p>
+        <div class="mt-4">
+          <a href="#create" class="pillbtn pill-blue">Upload</a>
         </div>
-        <div class="card p-6">
-          <div class="pill badge">Step 3</div>
-          <h3 class="h-font text-xl mt-2">Climb the Board</h3>
-          <p class="mt-2">Top memes get spotlighted weekly. Tips & boosts coming in Phase 2.</p>
+      </article>
+
+      <!-- STEP 2 -->
+      <article class="card p-6 group transition-transform hover:-translate-y-1">
+        <div class="flex items-center gap-2">
+          <span class="pill badge">Step 2</span>
+          <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-[var(--mint)] border border-slate-200">
+            <!-- share icon -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M8 12l8-5v10l-8-5Z" stroke="#0f172a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
         </div>
-      </div>
+        <h3 class="h-font text-xl mt-3">Share</h3>
+        <p class="mt-1 text-slate-700">Post with <strong>#ZaddyMeme</strong>. Tag friends. Rally your squad.</p>
+        <div class="mt-4 flex gap-3">
+          <a href="#gallery" class="pillbtn pill-mint">View Gallery</a>
+          <a href="#submit" class="pillbtn pill-lblue">Submit Link</a>
+        </div>
+      </article>
+
+      <!-- STEP 3 -->
+      <article class="card p-6 group transition-transform hover:-translate-y-1">
+        <div class="flex items-center gap-2">
+          <span class="pill badge">Step 3</span>
+          <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-[var(--yellow)] border border-slate-200">
+            <!-- trophy/leaderboard icon -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M8 21h8M12 17v4M6 4h12v4a6 6 0 0 1-12 0V4Z" stroke="#0f172a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </div>
+        <h3 class="h-font text-xl mt-3">Win</h3>
+        <p class="mt-1 text-slate-700">Top memes get featured. Daily resets. Boosts coming in Phase 2.</p>
+        <div class="mt-4">
+          <a href="#contest" class="pillbtn pill-yellow">See Contest</a>
+        </div>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- ============== CREATE CTA ============== -->
   <section id="create" class="pb-10">
